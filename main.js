@@ -42,6 +42,8 @@ const playSlider = ()=>{
 
     document.body.addEventListener("click", (event)=>{
         const target = event.target;
+        if(!target.closest(".portfolio-content"))
+            return;
         if(target.matches(".dot")){
             let temp_index = 0;
             let i=0;
@@ -65,16 +67,16 @@ const playSlider = ()=>{
 
     document.body.addEventListener("mouseover", (event)=>{
         const target = event.target;
-        if(target.closest(".portfolio-item")){
-            clearInterval(isAnimate);
-        }
+        if(!target.closest(".portfolio-item"))
+            return;
+        clearInterval(isAnimate);
     })
 
     document.body.addEventListener("mouseout", (event)=>{
         const target = event.target;
-        if(target.closest(".portfolio-item")){
-            isAnimate = setInterval(autoAnimation, 3000);
-        }
+        if(!target.closest(".portfolio-item"))
+            return;
+        isAnimate = setInterval(autoAnimation, 3000);
     })
 
 }
